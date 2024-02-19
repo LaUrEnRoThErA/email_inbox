@@ -1,5 +1,5 @@
 # This programme is an email inbox, designed to store and manage emails. Including the 
-# abilities to 'read an email', 'view unread emails', 'mark emails as read', 'mark as spam',
+# abilities to 'read an email', 'Compose an email', 'view unread emails', 'mark emails as read', 'mark as spam',
 # and 'view spam folder'.
 
 # Create and initialise class taking the three arguments of 'email address', 'subject line'
@@ -90,6 +90,16 @@ def read_email(inbox, email_index):
         print("Invalid email number.")  # Error handling.
 
 
+def create_email():
+    email_address = input("Enter recipient's email address: ")
+    subject_line = input("Enter email subject: ")
+    email_content = input("Enter email content: ")
+
+    new_email = Email(email_address, subject_line, email_content)
+    inbox.append(new_email)
+    print("Email created and added to the inbox.\n")
+
+
 # Print 'Welcome' message and present menu choices.
 print("Welcome to your inbox! Please choose a following option below:")
 
@@ -100,9 +110,10 @@ while True:
     print("2. View unread emails")
     print("3. Mark an email as spam")
     print("4. View spam folder")
-    print("5. Quit application")
+    print("5. Compose email & send to Inbox")
+    print("6. Quit application")
 
-    choice = input("Enter the number of the option (1, 2, 3, 4, 5): ")
+    choice = input("Enter the number of the option (1, 2, 3, 4, 5, 6): ")
 
     if choice == '1':
         list_emails(inbox)
@@ -117,7 +128,9 @@ while True:
     elif choice == '4':
         view_spam_folder(inbox)
     elif choice == '5':
+        create_email()
+    elif choice == '6':
         print("Goodbye!\n")
         break
     else:
-        print("Invalid choice. Please enter 1, 2, 3, 4, or 5.\n")  # Error handling.
+        print("Invalid choice. Please enter 1, 2, 3, 4, 5 or 6.\n")  # Error handling.
